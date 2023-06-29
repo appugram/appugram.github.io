@@ -4,332 +4,493 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Astile Kuriakose</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
   <link href="https://fonts.googleapis.com/css?family=Pacifico|Montserrat:300,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+  <title>Astile Kuriakose - Portfolio</title>
   <style>
+    /* Updated CSS styles */
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #222;
+      font-family: 'Roboto Condensed', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #C4A484;
+      transition: background-color 0.5s ease;
+      color: #333;
+      background-image: radial-gradient(circle, #911 20%, transparent 20%),
+        radial-gradient(circle, #103 20%, transparent 20%);
+      background-size: 6px 6px;
+      background-position: 0 0, 20px 20px;
+      animation: backgroundRipple 1s infinite linear;
+    }
+
+    body.dark-mode {
+      background-color: #111;
       color: #fff;
-      padding: 40px;
-      text-align: center;
-      overflow-y: scroll;
+      background-image: radial-gradient(circle, #fff 10%, transparent 20%),
+        radial-gradient(circle, #fff 10%, transparent 20%);
     }
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
-      font-weight: 400;
-      text-transform: uppercase;
-      cursor: pointer;
-      margin-top: 40px;
-      margin-bottom: 10px;
-    }
-
-    .collapse-content {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 18px;
-      font-weight: 300;
-      text-align: left;
-      margin-bottom: 20px;
-    }
-
-    .social-icons {
-      margin-top: 40px;
-    }
-
-    .social-icons a {
-      display: inline-block;
-      margin-right: 10px;
-      color: #fff;
-      font-size: 24px;
-    }
-
-    .contact-me {
-      margin-top: 40px;
-    }
-
-    .contact-me a {
-      color: #fff;
-      text-decoration: none;
-      border: 2px solid #fff;
-      padding: 10px 20px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-    }
-
-    .contact-me a:hover {
-      background-color: #fff;
-      color: #222;
+    @keyframes backgroundRipple {
+      0% {
+        background-position: 0 0, 20px 20px;
+      }
+      100% {
+        background-position: 4px 4px, 6px 6px;
+      }
     }
 
     header {
-      position: relative;
-      margin-bottom: 40px;
+      background-color: #100;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
     }
 
-    .profile-picture {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      display: block;
+    h1 {
+      font-size: 50px;
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+    }
+
+    section {
+      padding: 15px 15px 10px;
+      max-width: 650px;
       margin: 0 auto;
     }
 
-    #particles-js {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 100%;
+    h2.subheading-btn {
+      margin-bottom: 0;
+      padding-bottom: 5px;
+      font-size: 20px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 0;
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #333;
+      border-bottom: 1px solid #333;
     }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border: 5px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background-color: #100;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.5;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    .dialog-box {
+      display: none;
+      background-color: #D3D3D3;
+      border: 5px solid #111;
+      padding: 20px;
+      margin-bottom: 20px;
+      color: #333;
+      border-radius: 10px;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    body.dark-mode .dialog-box {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .mode-switch-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      background-color: #333;
+      border-radius: 10px;
+      padding: 5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #fff;
+    }
+
+    .mode-switch-btn span {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: #ccc;
+      border-radius: 50%;
+      transition: 0.2s;
+      margin-right: 5px;
+    }
+
+    .mode-switch-btn.dark-mode span {
+      background-color: #333;
+      transform: translateX(15px);
+    }
+
+    /* New styles for buttons */
+    .subheading-btn {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 10px;
+      border: none;
+      background-color: #f8f8f8;
+      color: #333;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+      width: fit-content;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    .subheading-btn:hover {
+      background-color: #ccc;
+    }
+
+    .subheading-btn.active {
+      background-color: #111;
+      color: #fff;
+    }
+
+    .contact-me-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      background-color: #D3D3D3;
+      color: #111;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      width: fit-content;
+      text-decoration: none;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    .contact-me-btn:hover {
+      background-color: #ccc;
+    }
+	
+	.social-media-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .social-media-icons li {
+    margin-right: 10px;
+  }
+
+  .social-media-icons a {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .text-justify {
+      text-align: justify;
+  }
+  
+  .education {
+      margin-bottom: 20px;
+    }
+    .education h3 {
+      margin-bottom: 5px;
+    }
+    .education p {
+      margin: 0;
+  }
+  
+  .training {
+      margin-bottom: 20px;
+    }
+    .training h3 {
+      margin-bottom: 5px;
+    }
+    .training p {
+      margin: 0;
+  }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const dialogBoxes = document.querySelectorAll('.dialog-box');
+      const subheadingBtns = document.querySelectorAll('.subheading-btn');
+      const btn = document.querySelector('.mode-switch-btn');
+
+      subheadingBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const dialogBox = this.nextElementSibling;
+          dialogBox.style.display = (dialogBox.style.display === 'none' || dialogBox.style.display === '') ? 'block' : 'none';
+
+          // Toggle active class on button
+          this.classList.toggle('active');
+        });
+      });
+
+      btn.addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+      });
+    });
+  </script>
 </head>
 
 <body>
-  <div id="particles-js"></div>
   <header>
-    <img class="profile-picture"
-      src="https://yt3.googleusercontent.com/ytc/AGIKgqNgiNz-lqXSUVZtUxdu3dGuZYksjM3Vg1sWg1S4ww=s900-c-k-c0x00ffffff-no-rj"
-      alt="Profile Picture">
-	<br>  
-    <h1>Astile Kuriakose</h1>
+    <img class="profile-img" src="https://media.licdn.com/dms/image/C4E03AQHxRodoCffrNQ/profile-displayphoto-shrink_800_800/0/1632880477202?e=2147483647&v=beta&t=9d2zLubI2tRS6Ajqvy52IX9JNIrIe6jBLEZ92Yo6JNs" alt="Profile Picture">
+    <h1 style="      font-family: 'Pacifico', cursive;">Astile Kuriakose.</h1>
   </header>
 
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2 data-toggle="collapse" data-target="#about-me-content">About Me</h2>
-          <div id="about-me-content" class="collapse collapse-content">
-            <p>
-              I have a proactive approach and a knack for quick learning and adapting acquired throughout my academic career. I aim to work in a challenging role that involves critical and creative thinking and problem-solving. I would love to utilize all my skills in an organization that provides me continuous opportunities wherein I shall work for the development of the organization thereby developing myself.
-            </p>
-          </div>
-        </div>
-      </div>
+  <button class="mode-switch-btn">
+    <span></span>
+    🌝🌚
+  </button>
 
-      <div class="row">
-        <div class="col-md-12">
-          <h2 data-toggle="collapse" data-target="#education-content">Education</h2>
-          <div id="education-content" class="collapse collapse-content">
-            <ul>
-              <li>Class 10 | AISSE | 2003 to 2014 | Carmel Public School and Junior College, Puliyanmala, Idukki, Kerala | 90%</li>
-              <li>Class 10 +2 | AISSCE | 2014 to 2016 | Chavara Public School and Junior College, Pala, Kottayam, Kerala | 68%</li>
-              <li>Bachelor of Science in Biotechnology | 2016 to 2019 | Mary Matha College of Arts and Science, Periyakulam, Theni, Tamil Nadu | 68%</li>
-              <li>Master of Science in Biotechnology | 2020 to 2022 | Indira Gandhi College of Arts and Science, Nellikuzhi, Kothamangalam, Ernakulam, Kerala</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <h2 data-toggle="collapse" data-target="#qualifications-content">Additional Qualifications</h2>
-          <div id="qualifications-content" class="collapse collapse-content">
-            <ul>
-              <li>Training on “Computer Hardware and Peripherals” – Certificate Course (on behalf of the Prime Minister’s PMKK Scheme)</li>
-              <li>Extension Activities on Behalf of the National Service Scheme (NSS)</li>
-              <li>Android Development (OS Based, Kernels etc.)</li>
-              <li>M.Sc. Project at CRS Pampadumpara – Molecular, Morphological & Genetic characterization of hybrids of small cardamom</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <h2 data-toggle="collapse" data-target="#work-experience-content">Work Experience</h2>
-          <div id="work-experience-content" class="collapse collapse-content">
-            <ul>
-              <li>Worked as a Skilled Assistant at Cardamom Research Station, Pampadumpara under Kerala Agriculture University’s project “Molecular characterization of cardamom germplasm collection at CRS, Pampadumpara”</li>
-              <li>Working as a Skilled Assistant at Cardamom Research Station, Pampadumpara under All India Coordinated Research Project (AICRP) - Current Job</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <h2 data-toggle="collapse" data-target="#language-skills-content">Language Skills</h2>
-          <div id="language-skills-content" class="collapse collapse-content">
-            <ul>
-              <li>English: Full professional proficiency</li>
-              <li>Malayalam: Native Language</li>
-              <li>Tamil: Basic communication proficiency</li>
-              <li>Hindi: Basic communication proficiency</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <h2 data-toggle="collapse" data-target="#technical-skills-content">Technical Skills</h2>
-          <div id="technical-skills-content" class="collapse collapse-content">
-            <ul>
-              <li>Familiar with laboratory instruments. Specifically, biotechnology instruments.</li>
-              <li>Advanced knowledge of Microsoft Office.</li>
-              <li>Proficient in Linux system administration, including Ubuntu, CentOS, and Red Hat.</li>
-              <li>Advanced knowledge of Git version control system, including GitHub and GitLab.</li>
-              <li>Technically skilled professional with a strong understanding of computer hardware components, assembly, and troubleshooting.</li>
-              <li>Detail-oriented professional with exceptional data entry skills, ensuring accuracy and efficiency in handling large volumes of data in tight deadlines.</li>
-              <li>Strong data analysis skills using statistical software such as MS Excel. Experience in data interpretation and visualization.</li>
-              <li>Familiarity with survey software (Qualtrics, SurveyMonkey) and data visualization tools (Tableau, Power BI).</li>
-              <li>Willingness to learn and adapt to new technologies, research techniques, and industry-specific knowledge.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    <div class="social-icons">
-      <a href="https://twitter.com/atlanprime" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://facebook.com/astilekuriako" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://linkedin.com/astile-kuriakose/" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <section id="about-me">
+    <h2 class="subheading-btn">About Me</h2>
+    <div class="dialog-box">
+	  <div class="text-justify">
+      <p>      I am Astile Kuriakose, a dedicated individual with a proactive mindset and a strong aptitude for rapid learning and adaptability. Throughout my academic journey, I have cultivated valuable skills that encompass critical thinking, creativity, and problem-solving. As I embark on my professional career, I am seeking an engaging position that embraces challenges and allows me to utilize my full range of abilities. My goal is to contribute to an organization that offers ongoing opportunities for growth, enabling me to make a positive impact on its development while continuously nurturing my own personal advancement.</p>
     </div>
+  </section>
 
-    <div class="contact-me">
-      <a href="mailto:astilekuriakose97@gmail.com">Contact Me</a>
+  <section id="education">
+    <h2 class="subheading-btn">Education</h2>
+    <div class="dialog-box">
+      <ul>
+        <div class="education">
+    <h3>Secondary Education (Class 10)</h3>
+    <p>
+      Examination: AISSE<br>
+      Years: 2003 to 2014<br>
+      School: Carmel Public School and Junior College<br>
+      Location: Puliyanmala, Idukki, Kerala<br>
+      Percentage: 90%
+    </p>
+  </div>
+  
+  <div class="education">
+    <h3>Higher Secondary Education (Class 10 +2)</h3>
+    <p>
+      Examination: AISSCE<br>
+      Years: 2014 to 2016<br>
+      School: Chavara Public School and Junior College<br>
+      Location: Pala, Kottayam, Kerala<br>
+      Percentage: 68%
+    </p>
+  </div>
+  
+  <div class="education">
+    <h3>Bachelor of Science in Biotechnology</h3>
+    <p>
+      Years: 2016 to 2019<br>
+      College: Mary Matha College of Arts and Science<br>
+      Location: Periyakulam, Theni, Tamil Nadu<br>
+      Degree: Bachelor of Science in Biotechnology<br>
+      Percentage: 68%
+    </p>
+  </div>
+  
+  <div class="education">
+    <h3>Master of Science in Biotechnology</h3>
+    <p>
+      Years: 2020 to 2022<br>
+      College: Indira Gandhi College of Arts and Science<br>
+      Location: Nellikuzhi, Kothamangalam, Ernakulam, Kerala<br>
+      Degree: Master of Science in Biotechnology<br>
+      Percentage: 72%
+    </p>
+  </div>
+      </ul>
     </div>
-  </main>
+  </section>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<br>
-<footer id="footer">
-			&copy; 2023 Astile Kuriakose
-<br>
+  <section id="qualifications">
+    <h2 class="subheading-btn">Additional Qualifications</h2>
+    <div class="dialog-box">
+      <ul>
+        <div class="training">
+    <h3>Training on "Computer Hardware and Peripherals"</h3>
+    <p>Certificate Course (on behalf of the Prime Minister's PMKK Scheme)</p>
+  </div>
+  
+  <div class="training">
+    <h3>Extension Activities on Behalf of the National Service Scheme (NSS)</h3>
+  </div>
+  
+  <div class="training">
+    <h3>Android Development</h3>
+    <p>OS Based, Kernels, etc.</p>
+  </div>
+  
+  <div class="training">
+    <h3>M.Sc. Project at CRS Pampadumpara</h3>
+    <p>Molecular, Morphological & Genetic characterization of hybrids of small cardamom</p>
+  </div>
+      </ul>
+    </div>
+  </section>
+
+  <section id="work-experience">
+    <h2 class="subheading-btn">Work Experience</h2>
+    <div class="dialog-box">
+      <ul>
+          <div class="work-experience">
+    <h3>1. Skilled Assistant at Cardamom Research Station, Pampadumpara</h3>
+    <p>Worked under Kerala Agriculture University's project "Molecular characterization of cardamom germplasm collection at CRS, Pampadumpara"</p>
+  </div>
+  
+  <div class="work-experience">
+    <h3>2. Skilled Assistant at Cardamom Research Station, Pampadumpara</h3>
+    <p>Currently working under the All India Coordinated Research Project (AICRP)</p>
+  </div>
+      </ul>
+    </div>
+  </section>
+
+  <section id="language-skills">
+    <h2 class="subheading-btn">Language Skills</h2>
+    <div class="dialog-box">
+      <ul>
+          <div class="language">
+    <h3>English</h3>
+    <p>Full professional proficiency</p>
+  </div>
+  
+  <div class="language">
+    <h3>Malayalam</h3>
+    <p>Native Language</p>
+  </div>
+  
+  <div class="language">
+    <h3>Tamil</h3>
+    <p>Basic communication proficiency</p>
+  </div>
+  
+  <div class="language">
+    <h3>Hindi</h3>
+    <p>Basic communication proficiency</p>
+  </div>
+      </ul>
+    </div>
+  </section>
+
+  <section id="technical-skills">
+    <h2 class="subheading-btn">Technical Skills</h2>
+    <div class="dialog-box">
+      <ul>
+          <div class="skills">
+    <h3>Laboratory Instruments</h3>
+    <ul>
+      <li>Familiarity with biotechnology instruments, their technical sides and complete operarions of devices such as PCR, Spectrophotometer, Gel Documentation System, UV Transilluminator, LAF etc.</li>
+    </ul>
+  </div>
+  
+  <div class="skills">
+    <h3>Microsoft Office</h3>
+    <ul>
+      <li>Advanced knowledge of Microsoft Office suite.</li>
+    </ul>
+  </div>
+  
+  <div class="skills">
+    <h3>Linux System Administration</h3>
+    <ul>
+      <li>Proficiency in Ubuntu, CentOS, and Red Hat distributions.</li>
+    </ul>
+  </div>
+  
+  <div class="skills">
+    <h3>Git Version Control System</h3>
+    <ul>
+      <li>Advanced knowledge of Git, including GitHub and GitLab platforms.</li>
+    </ul>
+  </div>
+  
+  <div class="skills">
+    <h3>Computer Hardware and Troubleshooting</h3>
+    <ul>
+      <li>Comprehensive understanding of computer hardware components, assembly, and troubleshooting.</li>
+    </ul>
+  </div>
+  
+  <div class="skills">
+    <h3>Data Entry and Analysis</h3>
+    <ul>
+      <li>Exceptional data entry skills with attention to detail.</li>
+      <li>Strong data analysis using MS Excel and experience in data interpretation and visualization.</li>
+    </ul>
+  </div>
+  
+  <div class="skills">
+    <h3>Survey Software and Data Visualization Tools</h3>
+    <ul>
+      <li>Familiarity with Qualtrics and SurveyMonkey for surveys.</li>
+      <li>Experience with Tableau and Power BI for data visualization.</li>
+    </ul>
+  </div>
+  
+  <div class="skills">
+    <h3>Continuous Learning and Adaptability</h3>
+    <ul>
+      <li>Willingness to learn and adapt to new technologies, research techniques, and industry-specific knowledge.</li>
+    </ul>
+  </div>
+      </ul>
+    </div>
+  </section>
+  <footer>
+    <a class="contact-me-btn" href="mailto:astilekuriakose97@gmail.com">Contact Me</a>
+<div>
+ <ul> 
+ <br>
+<a href="https://www.facebook.com/astilekuriako"><i class="fab fa-facebook"></i></a>   
+<a href="https://www.linkedin.com/in/astile-kuriakose"><i class="fab fa-linkedin"></i></a>
+<a href="https://twitter.com/atlanprime"><i class="fab fa-twitter"></i></a> 
+ </ul>
+ <br>
 <img align="center" src="https://komarev.com/ghpvc/?username=AtlanPrime&style=flat-square" />			
-		</footer>
-	</div>  
-    <!-- Rest of the content -->
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: {
-          value: 80,
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        color: {
-          value: "#ffffff"
-        },
-        shape: {
-          type: "circle",
-          stroke: {
-            width: 0,
-            color: "#000000"
-          },
-          polygon: {
-            nb_sides: 5
-          },
-          image: {
-            src: "img/github.svg",
-            width: 100,
-            height: 100
-          }
-        },
-        opacity: {
-          value: 0.5,
-          random: false,
-          anim: {
-            enable: false,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false
-          }
-        },
-        size: {
-          value: 3,
-          random: true,
-          anim: {
-            enable: false,
-            speed: 40,
-            size_min: 0.1,
-            sync: false
-          }
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#ffffff",
-          opacity: 0.4,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 6,
-          direction: "none",
-          random: false,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200
-          }
-        }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: {
-            enable: true,
-            mode: "repulse"
-          },
-          onclick: {
-            enable: true,
-            mode: "push"
-          },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 400,
-            line_linked: {
-              opacity: 1
-            }
-          },
-          bubble: {
-            distance: 400,
-            size: 40,
-            duration: 2,
-            opacity: 8,
-            speed: 3
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.4
-          },
-          push: {
-            particles_nb: 4
-          },
-          remove: {
-            particles_nb: 2
-          }
-        }
-      },
-      retina_detect: true
-    });
-  </script>
+</div>
+    <p>&copy; 2023 Astile Kuriakose. All rights reserved. | Powered by ChatGPT</p>
+  </footer>
 </body>
-
 </html>
